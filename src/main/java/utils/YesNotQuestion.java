@@ -16,7 +16,4 @@ public class YesNotQuestion {
         return question == 'y' || question == 'Y';
     }
 
-    public boolean isNegative() {
-        return question == 'n' || question == 'N';
-    }
 }

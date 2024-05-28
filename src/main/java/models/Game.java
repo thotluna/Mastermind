@@ -7,11 +7,15 @@ import java.util.List;
 
 public class Game {
 
-    private final List<Attempts> attempts;
-    private final Combination secretCombination;
+    private List<Attempts> attempts;
+    private Combination secretCombination;
     private Combination proposedCombination;
 
     public Game() {
+       reset();
+    }
+
+    public void reset(){
         attempts = new ArrayList<>();
         secretCombination = new Combination();
     }

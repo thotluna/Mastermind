@@ -1,27 +1,41 @@
 package views;
 
-import views.console.GameView;
-import views.console.Message;
-import views.console.WelcomeView;
-import views.console.YesNotView;
+import controllers.Controller;
+import controllers.GameController;
+import controllers.ResumeController;
+import controllers.StartController;
+import views.console.*;
 
 public class ConsoleView implements View
 {
     private final WelcomeView welcomeView;
     private final GameView gameView;
-    private final YesNotView yesNotView;
+
+    private final ResumeView resumeView;
 
     public ConsoleView() {
-        this.welcomeView = new WelcomeView();
-        this.gameView = new GameView();
-        this.yesNotView = new YesNotView(Message.RESUME.toString());
+        welcomeView = new WelcomeView();
+        gameView = new GameView();
+        resumeView = new ResumeView();
     }
 
     @Override
-    public void interact(){
-        do {
-            welcomeView.interact();
-            gameView.interact();
-        }while (yesNotView.isAffirmative());
+    public void interact(Controller controller){
+        controller.accept(this);
+    }
+
+    @Override
+    public void visit(StartController startController) {
+        welcomeView.interact(startController);
+    }
+
+    @Override
+    public void visit(GameController gameController) {
+        gameView.interact(gameController);
+    }
+
+    @Override
+    public void visit(ResumeController resumeController) {
+        resumeView.interact(resumeController);
     }
 }

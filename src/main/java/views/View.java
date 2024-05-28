@@ -1,5 +1,7 @@
 package views;
 
-public interface View {
-    public void interact();
+import controllers.Controller;
+
+public interface View extends ControllerVisitor {
+    void interact(Controller controller);
 }

@@ -1,17 +1,12 @@
 package views.console;
 
+import controllers.StartController;
 import utils.Console;
-import views.console.Message;
 
-public class WelcomeView {
-    private final Console console;
+public class WelcomeView extends PrintView{
 
-    public WelcomeView() {
-        console = Console.getInstance();
-    }
-
-
-    public void interact() {
+    public void interact(StartController startController) {
         console.write(Message.TITLE.toString());
+        startController.next();
     }
 }

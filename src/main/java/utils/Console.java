@@ -31,24 +31,6 @@ public class Console {
         return input;
     }
 
-    public String readString() {
-        return this.readString("");
-    }
-
-    public int readInt(String title) {
-        int input = 0;
-        boolean ok = false;
-        do {
-            try {
-                input = Integer.parseInt(this.readString(title));
-                ok = true;
-            } catch (Exception ex) {
-                this.writeError("integer");
-            }
-        } while (!ok);
-        return input;
-    }
-
     public char readChar(String title) {
         char charValue = ' ';
         boolean ok = false;

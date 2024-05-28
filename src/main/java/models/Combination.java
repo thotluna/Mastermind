@@ -15,10 +15,11 @@ public class Combination {
 
     public Combination() {
         List<Color> propositions = Color.getAll();
-        int[] listIndex = new int[2];
+        int nColorsRemove = propositions.size() - WIDTH;
+        int[] listIndex = new int[nColorsRemove];
         do{
-            for (int i = 0; i< 2; i++){
-                listIndex[i] = new Random().nextInt(6);
+            for (int i = 0; i< nColorsRemove; i++){
+                listIndex[i] = new Random().nextInt(propositions.size() + 1);
             }
         }while (listIndex[0] != listIndex[1]);
 

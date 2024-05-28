@@ -1,6 +1,7 @@
 package models;
 
 public class Attempts {
+    public static final int MAX_ATTEMPTS = 10;
     private final Combination proposedCombination;
     private final int nAttempt;
     private final int black;
@@ -30,6 +31,6 @@ public class Attempts {
     }
 
     public boolean isFinished() {
-        return isWin() || nAttempt > 10;
+        return isWin() || nAttempt > MAX_ATTEMPTS;
     }
 }

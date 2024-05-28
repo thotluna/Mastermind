@@ -1,5 +1,4 @@
 import views.ConsoleView;
-import views.DesktopView;
 import views.View;
 
 public class MastermindConsole extends Mastermind {

@@ -1,20 +1,17 @@
 package views.console;
 
+import controllers.GameController;
 import models.Attempts;
-import models.Game;
+import utils.Console;
 
-public class GameHeadView extends View {
+public class GameHeadView extends PrintView {
 
-    public GameHeadView(Game game) {
-        super(game);
-    }
-
-    public void interact() {
+    public void interact(GameController gameController) {
         console.writeln("\n");
-        console.writeln(Message.ATTEMPTS.toString(), game.getNumberOfAttempts());
-        console.writeln(game.getSecretCombination());
+        console.writeln(Message.ATTEMPTS.toString(), gameController.getNumberOfAttempts());
+        console.writeln(gameController.getSecretCombination());
 
-        for(Attempts attempt: game.getAttempts()){
+        for(Attempts attempt: gameController.getAttempts()){
             console.writeln(Message.ATTEMPT.toString(), attempt.getProposedCombination().toString(),
                     attempt.getBlack(), attempt.getWhite() );
         }

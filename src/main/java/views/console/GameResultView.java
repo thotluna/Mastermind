@@ -1,15 +1,12 @@
 package views.console;
 
-import models.Game;
+import controllers.GameController;
+import utils.Console;
 
-public class GameResultView extends View {
+public class GameResultView extends PrintView {
 
-    public GameResultView(Game game) {
-        super(game);
-    }
-
-    public void interact() {
-        if(game.isWin()){
+    public void interact(GameController gameController) {
+        if(gameController.isWin()){
             console.writeln(Message.WON.toString());
         }else {
             console.writeln(Message.LOSER.toString());

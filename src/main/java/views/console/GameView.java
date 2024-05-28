@@ -1,31 +1,28 @@
 package views.console;
 
-import models.Game;
+import controllers.GameController;
 
 public class GameView {
-    private  Game game;
+
     private final GameHeadView headView;
 
     private final GameResultView resultView;
     private final PlayerView playerView;
 
     public GameView() {
-        reset();
-        headView = new GameHeadView(game);
-        resultView = new GameResultView(game);
-        playerView = new PlayerView(game);
+        headView = new GameHeadView();
+        resultView = new GameResultView();
+        playerView = new PlayerView();
     }
 
-    private void reset(){
-        game = new Game();
-    }
-
-    public void interact() {
+    public void interact(GameController gameController) {
         do{
-            headView.interact();
-            playerView.interact();
-            game.interact();
-        }while (game.isFinished());
-        resultView.interact();
+            headView.interact(gameController);
+            playerView.interact(gameController);
+            gameController.interact();
+        }while (gameController.finished());
+        resultView.interact(gameController);
+        gameController.next();
+
     }
 }

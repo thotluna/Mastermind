@@ -1,44 +1,22 @@
 package views.console;
 
-import models.Combination;
-import models.Error;
-import models.Game;
-import models.Validate;
+import controllers.GameController;
 
-public class PlayerView extends View {
+public class PlayerView extends PrintView {
 
-    public PlayerView(Game game) {
-        super(game);
-    }
-
-    public void interact() {
+    public void interact(GameController gameController) {
         boolean isValid;
         String proposedCombinationString;
         do{
+            isValid = true;
             proposedCombinationString = console.readString(Message.ASK_PROPOSED.toString());
-            isValid = validate(proposedCombinationString);
+            String error = gameController.validate(proposedCombinationString);
+            if(!error.isBlank()){
+                console.writeError(error);
+                isValid = false;
+            }
         }while(!isValid);
 
-        game.setProposedCombination(new Combination(proposedCombinationString));
-    }
-
-    private boolean validate(String proposedCombination){
-        Validate validate = new Validate(proposedCombination);
-
-        if(!validate.isLongCorrect()){
-            console.writeError(Error.LENGTH.toString());
-            return false;
-        }
-
-        if(!validate.matches()){
-            console.writeError(Error.NOT_COLOR.toString());
-            return false;
-        }
-
-        if(!validate.noDuplicate()){
-            console.writeError(Error.DUPLICATED.toString());
-            return false;
-        }
-        return true;
+        gameController.setProposedCombination(proposedCombinationString);
     }
 }
