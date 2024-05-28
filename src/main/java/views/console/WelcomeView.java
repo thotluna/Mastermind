@@ -1,6 +1,7 @@
-package views;
+package views.console;
 
 import utils.Console;
+import views.console.Message;
 
 public class WelcomeView {
     private final Console console;

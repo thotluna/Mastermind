@@ -1,13 +1,15 @@
-import views.ConsoleView;
+import views.View;
 
-public class Mastermind {
+public abstract class Mastermind {
+    private final View view;
 
-    public void play(ConsoleView view){
+    protected Mastermind() {
+        view = this.createView();
+    }
+
+    public void play(){
         view.interact();
     }
 
-    public static void main(String[] args) {
-        ConsoleView view = new ConsoleView();
-        new Mastermind().play(view);
-    }
+    public abstract View createView();
 }

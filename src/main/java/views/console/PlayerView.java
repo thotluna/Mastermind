@@ -1,4 +1,4 @@
-package views;
+package views.console;
 
 import models.Combination;
 import models.Error;
