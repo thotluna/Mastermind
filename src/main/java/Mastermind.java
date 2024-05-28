@@ -1,16 +1,13 @@
-import utils.Console;
-import utils.YesNotQuestion;
+import views.ConsoleView;
 
 public class Mastermind {
 
-    public void play(){
-        do {
-            Console.getInstance().write(Message.TITLE.toString());
-            new Game().start();
-        }while (new YesNotQuestion().read(Message.RESUME.toString()).isAffirmative());
+    public void play(ConsoleView view){
+        view.interact();
     }
 
     public static void main(String[] args) {
-        new Mastermind().play();
+        ConsoleView view = new ConsoleView();
+        new Mastermind().play(view);
     }
 }

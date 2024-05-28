@@ -1,3 +1,5 @@
+package models;
+
 public class Attempts {
     private final Combination proposedCombination;
     private final int nAttempt;

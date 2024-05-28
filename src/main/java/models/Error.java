@@ -1,3 +1,5 @@
+package models;
+
 public enum Error {
     LENGTH("Wrong proposed combination length"),
     NOT_COLOR("Wrong colors, they must be: rgybmc"),

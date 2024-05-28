@@ -1,3 +1,5 @@
+package models;
+
 import types.ResultAttempt;
 import types.Color;
 
@@ -35,11 +37,6 @@ public class Combination {
         for (char color: combination.toCharArray()){
             this.combination.add(Color.get(color));
         }
-    }
-
-    public static boolean validate(String proposedCombinationString) {
-        Validate validate = new Validate(proposedCombinationString);
-        return validate.isValidate();
     }
 
     public String printWithAsterisk() {

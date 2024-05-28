@@ -1,3 +1,5 @@
+package views;
+
 public enum Message {
     TITLE("----- MASTERMIND -----"),
     ATTEMPTS("%d attempt(s):"),
